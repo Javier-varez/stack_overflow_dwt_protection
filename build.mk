@@ -1,7 +1,7 @@
 LOCAL_DIR := $(call current-dir)
 
 include $(CLEAR_VARS)
-LOCAL_NAME := stack_overflow_detection
+LOCAL_NAME := stack_overflow_app
 LOCAL_CFLAGS := \
     -mcpu=cortex-m3 \
     -mfloat-abi=soft \
@@ -29,7 +29,8 @@ LOCAL_LINKER_FILE := \
     $(LOCAL_DIR)/memory.ld
 LOCAL_SRC := \
     $(LOCAL_DIR)/src/postform_config.cpp \
-    $(LOCAL_DIR)/src/main.cpp
+    $(LOCAL_DIR)/src/main.cpp \
+    $(LOCAL_DIR)/src/dwt.cpp \
 LOCAL_ARM_ARCHITECTURE := v7-m
 LOCAL_ARM_FPU := nofp
 LOCAL_COMPILER := arm_clang
