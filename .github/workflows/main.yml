@@ -20,7 +20,10 @@ jobs:
       uses: fiam/arm-none-eabi-gcc@v1.0.3
       with:
         release: '9-2020-q2'
-    - name: Install bear
-      run: sudo apt install bear
     - name: Build
       run: make -j
+    - name: Archive binary
+      uses: actions/upload-artifact@v2
+      with:
+        name: stack_overflow_app
+        path: build/targets/stack_overflow_app
