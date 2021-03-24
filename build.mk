@@ -29,8 +29,7 @@ LOCAL_LINKER_FILE := \
     $(LOCAL_DIR)/memory.ld
 LOCAL_SRC := \
     $(LOCAL_DIR)/src/postform_config.cpp \
-    $(LOCAL_DIR)/src/main.cpp \
-    $(LOCAL_DIR)/src/dwt.cpp \
+    $(LOCAL_DIR)/src/main.cpp
 LOCAL_ARM_ARCHITECTURE := v7-m
 LOCAL_ARM_FPU := nofp
 LOCAL_COMPILER := arm_clang
