@@ -6,7 +6,7 @@ extern "C" void DebugMonHandlerHL(void* sp);
 
 class Dwt {
  public:
-  enum class AccessType { RO = 5, WO, RW };
+  enum class AccessType : uint32_t { RO = 5, WO, RW };
 
   struct Params {
     void* address;
@@ -17,7 +17,8 @@ class Dwt {
   class Callback {
    public:
     virtual ~Callback() = default;
-    virtual void WatchpointTriggered(void* stack_ptr) = 0;
+    virtual void WatchpointTriggered(uint8_t watchpoint_index,
+                                     void* stack_ptr) = 0;
   };
 
   Dwt();

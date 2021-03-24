@@ -10,8 +10,11 @@ Postform::RttLogger logger;
 SysTick& systick = SysTick::getInstance();
 
 class WatchpointCb : public Dwt::Callback {
-  void WatchpointTriggered(void* sp) {
-    LOG_ERROR(&logger, "Stack overflow detected at addr! %p", sp);
+  void WatchpointTriggered(uint8_t watchpoint_index, void* sp) {
+    LOG_ERROR(&logger,
+              "Stack overflow detected within the safety zone! Stack pointer = "
+              "%p, watchpoint index = %hhu",
+              sp, watchpoint_index);
     while (true) {
     }
   }
@@ -41,7 +44,7 @@ int main() {
 
   extern uint32_t __end__;
   uint32_t* safety_zone = &__end__ + 128;
-  dwt.SetWatchPoint(1, Dwt::Params{safety_zone, Dwt::AccessType::WO, 0},
+  dwt.SetWatchPoint(0, Dwt::Params{safety_zone, Dwt::AccessType::WO, 0},
                     &watchpoint_cb);
 
   LOG_DEBUG(&logger, "Triggering stack overflow");
