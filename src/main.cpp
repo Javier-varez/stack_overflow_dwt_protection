@@ -2,8 +2,8 @@
 #include <cstdint>
 #include <cstdio>
 
+#include "cortex_m_hal/dwt.h"
 #include "cortex_m_hal/systick.h"
-#include "dwt.hpp"
 #include "postform/rtt_logger.h"
 
 Postform::RttLogger logger;
