@@ -4,9 +4,12 @@
 
 #include "cortex_m_hal/dwt.h"
 #include "cortex_m_hal/systick.h"
-#include "postform/rtt_logger.h"
+#include "postform/rtt/transport.h"
+#include "postform/serial_logger.h"
 
-Postform::RttLogger logger;
+Postform::Rtt::Transport transport;
+Postform::SerialLogger<Postform::Rtt::Transport> logger{&transport};
+
 SysTick& systick = SysTick::getInstance();
 
 class WatchpointCb : public Dwt::Callback {
