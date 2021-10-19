@@ -17,7 +17,7 @@ LOCAL_CFLAGS := \
     -Wno-infinite-recursion
 LOCAL_CXXFLAGS := \
     $(LOCAL_CFLAGS) \
-    -std=gnu++17 \
+    -std=gnu++20 \
     -fno-exceptions \
     -fno-rtti \
     -ffunction-sections \
@@ -36,6 +36,6 @@ LOCAL_COMPILER := arm_clang
 LOCAL_STATIC_LIBS := \
     libcortex_m_startup \
     libcortex_m_hal \
-    libpostform
+    libpostform \
+    libditto
 include $(BUILD_BINARY)
-
